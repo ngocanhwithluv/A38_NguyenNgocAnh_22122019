@@ -39,7 +39,7 @@ public class YourOrderFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_yourorder, container, false);
 
         Bundle args = new Bundle();
-        foodss = args.getParcelableArrayList("Foods");
+        foodss = (ArrayList<Food>) args.getSerializable("Foods");
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(), RecyclerView.VERTICAL, false);

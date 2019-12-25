@@ -54,6 +54,10 @@ public class OrderFragment extends Fragment implements MyClick {
         binding.buttonYourOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Bundle args = new Bundle();
+                args.putSerializable("Foods", foods);
+
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, YourOrderFragment.newInstance()).commit();
             }
         });
@@ -73,8 +77,6 @@ public class OrderFragment extends Fragment implements MyClick {
         foods.add(food3);
         foods.add(food4);
 
-        Bundle args = new Bundle();
-        args.putParcelableArrayList("Foods", foods);
 
         binding.textViewSumAmount.setText(Integer.toString(sumAmount));
 
