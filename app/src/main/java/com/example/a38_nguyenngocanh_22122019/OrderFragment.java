@@ -44,7 +44,6 @@ public class OrderFragment extends Fragment implements MyClick {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, YourOrderFragment.newInstance()).commit();
-
             }
         });
 
@@ -74,8 +73,6 @@ public class OrderFragment extends Fragment implements MyClick {
     ArrayList<Food> foods;
     FoodAdapter foodAdapter;
     static int sumAmount;
-
-
 
     public ArrayList<Food> getFoods() {
         return foods;
