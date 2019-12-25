@@ -24,13 +24,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     OrderFragment orderFragment = new OrderFragment();
     MyClick myClick;
 
-    public FoodAdapter(MyClick myClick) {
-        this.myClick = myClick;
-    }
-
-    public FoodAdapter(ArrayList<Food> foodArrayList, Context context) {
+    public FoodAdapter(ArrayList<Food> foodArrayList, Context context, MyClick myClick) {
         this.foods = foodArrayList;
         this.context = context;
+        this.myClick = myClick;
+
     }
 
     @NonNull
@@ -46,6 +44,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final Food food = foods.get(position);
         holder.nameFood.setText(food.getName());
+        holder.totalFood.setText(Integer.toString(food.getPrice())+ "$");
 
         holder.nameFood.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,10 +70,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     }
     public class ViewHolder extends RecyclerView.ViewHolder  {
         TextView nameFood;
+        TextView totalFood;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameFood = itemView.findViewById(R.id.tex_view_name);
+            totalFood = itemView.findViewById(R.id.total);
 
         }
     }

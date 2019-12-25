@@ -19,6 +19,17 @@ import java.util.ArrayList;
 public class OrderFragment extends Fragment implements MyClick {
 
     ActivityOrderBinding binding;
+    MyClick myClick = new MyClick() {
+        @Override
+        public void OnClickName(Food food) {
+            sumAmount++;
+            sumTotal += food.getPrice();
+            int t = food.getAmount();
+            food.setAmount(t++);
+            binding.sumTotal.setText("Total: " + sumTotal);
+            binding.textViewSumAmount.setText(Integer.toString(sumAmount));
+        }
+    };
 
     public static OrderFragment newInstance() {
         Bundle args = new Bundle();
@@ -32,7 +43,7 @@ public class OrderFragment extends Fragment implements MyClick {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_order, container , false);
-
+        binding.sumTotal.setText("Total: " + sumTotal);
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,26 +64,28 @@ public class OrderFragment extends Fragment implements MyClick {
         binding.recyclerView.setLayoutManager(linearLayoutManager);
 
         foods = new ArrayList<>();
-        food1 = new Food("nna", 10, 1);
-        food2 = new Food("nnb", 12, 1);
-        food3 = new Food("nnc", 15, 1);
-        food4 = new Food("nnd", 20, 1);
+        food1 = new Food("Coca", 10, 0);
+        food2 = new Food("Chicken", 12, 0);
+        food3 = new Food("Rice", 15, 0);
+        food4 = new Food("Meat", 20, 0);
         foods.add(food1);
         foods.add(food2);
         foods.add(food3);
         foods.add(food4);
-        sumAmount = foods.size();
+
+        Bundle args = new Bundle();
+        args.putParcelableArrayList("Foods", foods);
 
         binding.textViewSumAmount.setText(Integer.toString(sumAmount));
 
-        foodAdapter = new FoodAdapter(foods, getContext());
+        foodAdapter = new FoodAdapter(foods, getContext(),myClick);
         binding.recyclerView.setAdapter(foodAdapter);
         return binding.getRoot();
     }
     Food food1, food2, food3, food4;
     ArrayList<Food> foods;
     FoodAdapter foodAdapter;
-    static int sumAmount;
+    static int sumAmount = 0, sumTotal = 0;
 
     public ArrayList<Food> getFoods() {
         return foods;
@@ -85,8 +98,7 @@ public class OrderFragment extends Fragment implements MyClick {
 
     @Override
     public void OnClickName(Food food) {
-        sumAmount++;
-
-        binding.textViewSumAmount.setText(Integer.toString(sumAmount));
+//        sumAmount++;
+//        binding.textViewSumAmount.setText(Integer.toString(sumAmount));
     }
 }

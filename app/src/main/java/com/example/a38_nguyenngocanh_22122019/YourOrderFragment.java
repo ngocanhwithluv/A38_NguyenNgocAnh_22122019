@@ -1,6 +1,7 @@
 package com.example.a38_nguyenngocanh_22122019;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,6 @@ import com.example.a38_nguyenngocanh_22122019.databinding.ActivityYourorderBindi
 import java.util.ArrayList;
 
 public class YourOrderFragment extends Fragment {
-    OrderFragment orderFragment = new OrderFragment();
     FoodOrderAdapter foodOrderAdapter;
 
     ActivityYourorderBinding binding;
@@ -38,7 +38,9 @@ public class YourOrderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_yourorder, container, false);
 
-        foodss = orderFragment.foods;
+        Bundle args = new Bundle();
+        foodss = args.getParcelableArrayList("Foods");
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(), RecyclerView.VERTICAL, false);
 
