@@ -1,6 +1,7 @@
 package com.example.a38_nguyenngocanh_22122019;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,8 @@ public class YourOrderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_yourorder, container, false);
-        foodss= orderFragment.getFoods();
+
+        foodss = orderFragment.getFoods();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(), RecyclerView.VERTICAL, false);
 
@@ -45,16 +47,12 @@ public class YourOrderFragment extends Fragment {
         foodOrderAdapter = new FoodOrderAdapter(foodss, getContext());
         binding.recyclerView.setAdapter(foodOrderAdapter);
 
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.activity_yourorder, container, false);
-
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().popBackStackImmediate();
             }
         });
-
 
         return binding.getRoot();
     }

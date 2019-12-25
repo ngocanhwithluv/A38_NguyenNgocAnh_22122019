@@ -16,7 +16,7 @@ import com.example.a38_nguyenngocanh_22122019.databinding.ActivityOrderBinding;
 
 import java.util.ArrayList;
 
-public class OrderFragment extends Fragment {
+public class OrderFragment extends Fragment implements MyClick {
 
     ActivityOrderBinding binding;
 
@@ -61,9 +61,9 @@ public class OrderFragment extends Fragment {
         return binding.getRoot();
     }
     Food food1, food2, food3, food4;
-    private ArrayList<Food> foods;
-    private FoodAdapter foodAdapter;
-    private static int sumAmount;
+    ArrayList<Food> foods;
+    FoodAdapter foodAdapter;
+    static int sumAmount;
 
     private void addFood(){
         food1 = new Food("nna", 10, 1);
@@ -85,5 +85,12 @@ public class OrderFragment extends Fragment {
 
     public void setFoods(ArrayList<Food> foods) {
         this.foods = foods;
+    }
+
+
+    @Override
+    public void OnClickName(Food food) {
+        sumAmount++;
+        binding.textViewSumAmount.setText(Integer.toString(sumAmount));
     }
 }

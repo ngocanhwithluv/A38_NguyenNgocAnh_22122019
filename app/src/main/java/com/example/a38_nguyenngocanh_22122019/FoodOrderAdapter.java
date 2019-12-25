@@ -40,15 +40,7 @@ public class FoodOrderAdapter extends RecyclerView.Adapter<FoodOrderAdapter.View
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final Food food = foods.get(position);
         holder.nameFood.setText(food.getName());
-
-        holder.nameFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
+        holder.amountFood.setText(Integer.toString(food.getAmount()));
     }
 
     @Override
