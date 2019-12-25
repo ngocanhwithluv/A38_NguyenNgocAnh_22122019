@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:background="#D6C9C9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:background="#DABCBC"
+            android:id="@+id/relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+            <ImageView
+                android:id="@+id/button_back"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/back"
+                android:padding="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/text_view_sum_amount"
+                android:text="0"
+                android:textSize="20dp"
+                android:layout_alignParentBottom="true"
+                android:textColor="#ff00"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="@dimen/_2sdp"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/button_your_order"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/yourorder" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recycler_view"
+            android:layout_below="@+id/relative_layout"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_10sdp"/>
+
+
+
+    </RelativeLayout>
+
+</layout>
