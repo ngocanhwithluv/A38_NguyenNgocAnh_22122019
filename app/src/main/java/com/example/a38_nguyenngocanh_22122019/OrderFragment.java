@@ -52,8 +52,18 @@ public class OrderFragment extends Fragment implements MyClick {
                 getContext(), RecyclerView.VERTICAL, false);
 
         binding.recyclerView.setLayoutManager(linearLayoutManager);
+
         foods = new ArrayList<>();
-        addFood();
+        food1 = new Food("nna", 10, 1);
+        food2 = new Food("nnb", 12, 1);
+        food3 = new Food("nnc", 15, 1);
+        food4 = new Food("nnd", 20, 1);
+        foods.add(food1);
+        foods.add(food2);
+        foods.add(food3);
+        foods.add(food4);
+        sumAmount = foods.size();
+
         binding.textViewSumAmount.setText(Integer.toString(sumAmount));
 
         foodAdapter = new FoodAdapter(foods, getContext());
@@ -65,19 +75,7 @@ public class OrderFragment extends Fragment implements MyClick {
     FoodAdapter foodAdapter;
     static int sumAmount;
 
-    private void addFood(){
-        food1 = new Food("nna", 10, 1);
-        food2 = new Food("nnb", 12, 1);
-        food3 = new Food("nnc", 15, 1);
-        food4 = new Food("nnd", 20, 1);
 
-        foods.add(food1);
-        foods.add(food2);
-        foods.add(food3);
-        foods.add(food4);
-        sumAmount = foods.size();
-
-    }
 
     public ArrayList<Food> getFoods() {
         return foods;
@@ -91,6 +89,7 @@ public class OrderFragment extends Fragment implements MyClick {
     @Override
     public void OnClickName(Food food) {
         sumAmount++;
+
         binding.textViewSumAmount.setText(Integer.toString(sumAmount));
     }
 }

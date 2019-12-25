@@ -38,7 +38,7 @@ public class YourOrderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_yourorder, container, false);
 
-        foodss = orderFragment.getFoods();
+        foodss = orderFragment.foods;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(), RecyclerView.VERTICAL, false);
 
