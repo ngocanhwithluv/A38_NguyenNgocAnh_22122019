@@ -3,28 +3,31 @@
     android:layout_width="match_parent"
 
     android:layout_height="wrap_content">
+
     <TextView
+        android:id="@+id/tex_view_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tex_view_name"
-        android:text="text"
-        android:textSize="@dimen/_30sdp"
         android:padding="@dimen/_2sdp"
-        android:textColor="#000000"/>
+        android:text="text"
+        android:textColor="#000000"
+        android:textSize="@dimen/_20sdp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/total"
         android:text=" : "
-        android:textSize="@dimen/_30sdp"/>
+        android:textSize="@dimen/_20sdp"/>
     <TextView
         android:padding="@dimen/_2sdp"
         android:layout_alignParentRight="true"
         android:id="@+id/total"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
         android:text="$"
-        android:textSize="@dimen/_30sdp"/>
+        android:gravity="right"
+        android:textSize="@dimen/_20sdp"/>
 
 
 </RelativeLayout>

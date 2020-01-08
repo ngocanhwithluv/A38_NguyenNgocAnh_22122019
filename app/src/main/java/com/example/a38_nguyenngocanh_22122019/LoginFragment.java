@@ -2,6 +2,8 @@ package com.example.a38_nguyenngocanh_22122019;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +21,14 @@ import com.example.a38_nguyenngocanh_22122019.databinding.ActivityLoginBinding;
 
 public class LoginFragment extends Fragment {
 
-    ActivityLoginBinding binding;
-
+    public ActivityLoginBinding binding;
+    public Message msg;
     public static LoginFragment newInstance() {
         Bundle args = new Bundle();
         LoginFragment fragment = new LoginFragment();
         fragment.setArguments(args);
         return fragment;
     }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,8 +40,9 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 if(binding.editTextUserName.getText().toString().equals(user) &&
                         binding.editTextPassword.getText().toString().equals(password)){
-                    getActivity().getSupportFragmentManager().beginTransaction
-                            ().addToBackStack(null).replace(R.id.frame_layout, new OrderFragment()).commit();
+                    msg = new Message();
+                    msg.what = 1;
+                    MainActivity.handler.sendMessage(msg);
                 }
                 else{
                     Toast.makeText(getContext() , "Try again", Toast.LENGTH_SHORT).show();

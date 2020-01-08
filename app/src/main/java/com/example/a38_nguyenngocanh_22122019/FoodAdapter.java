@@ -1,8 +1,6 @@
 package com.example.a38_nguyenngocanh_22122019;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +16,9 @@ import java.util.ArrayList;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
-    ArrayList<Food> foods;
-    Context context;
-    ActivityOrderBinding binding;
-    OrderFragment orderFragment = new OrderFragment();
+    public ArrayList<Food> foods;
+    public Context context;
+    public ActivityOrderBinding binding;
     MyClick myClick;
 
     public FoodAdapter(ArrayList<Food> foodArrayList, Context context, MyClick myClick) {
@@ -44,23 +41,16 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final Food food = foods.get(position);
         holder.nameFood.setText(food.getName());
-        holder.totalFood.setText(Integer.toString(food.getPrice())+ "$");
+        holder.totalFood.setText(food.getPrice()+ "$");
 
         holder.nameFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                myClick.OnClickName(food);
-
-//                sumAmount++;
-//                Log.e("NNa", sumAmount + " ");
-//                binding.textViewSumAmount.setText(Integer.toString(sumAmount));
-//                Log.e("NNa-sumAmount ", binding.textViewSumAmount.getText() + " ");
-//                int amount = food.getAmount() + 1;
-//                food.setAmount(amount);
+                myClick.OnClickAdd(food);
+                int amount = food.getAmount() + 1;
+                food.setAmount(amount);
             }
         });
-
 
     }
 
@@ -68,6 +58,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     public int getItemCount() {
         return foods.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder  {
         TextView nameFood;
         TextView totalFood;

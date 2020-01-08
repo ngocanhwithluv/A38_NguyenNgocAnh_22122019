@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
-        android:background="#D6C9C9"
+        android:background="@drawable/custom_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
-            android:background="#DABCBC"
+            android:background="@drawable/custom_recyclerview_background"
             android:id="@+id/relative_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp">
@@ -18,7 +18,10 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="#DABCBC"
             android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/_50sdp"
             android:id="@+id/recycler_view"
             android:layout_below="@+id/relative_layout"
             android:layout_height="match_parent"
