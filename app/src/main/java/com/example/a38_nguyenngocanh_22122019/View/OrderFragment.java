@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.a38_nguyenngocanh_22122019.Adapter.FoodAdapter;
+import com.example.a38_nguyenngocanh_22122019.AppManager;
 import com.example.a38_nguyenngocanh_22122019.Controller.MainActivity;
 import com.example.a38_nguyenngocanh_22122019.Model.Food;
 import com.example.a38_nguyenngocanh_22122019.MyClick;
@@ -58,14 +59,14 @@ public class OrderFragment extends Fragment {
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.sendMessage(0);
+                AppManager.handler.sendEmptyMessageDelayed(0, 0);
             }
         });
 
         binding.buttonYourOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.sendMessage(2);
+                AppManager.handler.sendEmptyMessageDelayed(2, 0);
             }
         });
 

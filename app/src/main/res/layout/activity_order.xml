@@ -12,6 +12,15 @@
             android:layout_height="@dimen/_40sdp"
             android:background="@drawable/custom_recyclerview_background">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Menu"
+                android:textSize="@dimen/_20sdp"
+                android:textColor="#000000"/>
+
+
             <ImageView
                 android:id="@+id/button_back"
                 android:layout_width="@dimen/_40sdp"
@@ -50,6 +59,7 @@
             android:padding="@dimen/_10sdp" />
 
         <TextView
+            android:layout_centerInParent="true"
             android:id="@+id/sum_total"
             android:textColor="#000000"
             android:textSize="20dp"

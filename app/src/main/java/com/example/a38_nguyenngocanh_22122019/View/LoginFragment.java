@@ -1,6 +1,8 @@
 package com.example.a38_nguyenngocanh_22122019.View;
 
 import android.os.Bundle;
+import android.os.ConditionVariable;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.a38_nguyenngocanh_22122019.AppManager;
+import com.example.a38_nguyenngocanh_22122019.Controller.LogInController;
 import com.example.a38_nguyenngocanh_22122019.Controller.MainActivity;
 import com.example.a38_nguyenngocanh_22122019.R;
 import com.example.a38_nguyenngocanh_22122019.databinding.ActivityLoginBinding;
@@ -33,8 +37,8 @@ public class LoginFragment extends Fragment {
         binding.buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(MainActivity.checkPass(binding.editTextUserName.getText().toString(), binding.editTextPassword.getText().toString())){
-                    MainActivity.sendMessage(1);
+                if(LogInController.checkPass(binding.editTextUserName.getText().toString(), binding.editTextPassword.getText().toString())){
+                    AppManager.handler.sendEmptyMessageDelayed(1, 0);
                 }
                 else {
                     Toast.makeText(getContext(), "Try again", Toast.LENGTH_SHORT).show();

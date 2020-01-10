@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a38_nguyenngocanh_22122019.Adapter.FoodOrderAdapter;
+import com.example.a38_nguyenngocanh_22122019.AppManager;
 import com.example.a38_nguyenngocanh_22122019.Controller.MainActivity;
 import com.example.a38_nguyenngocanh_22122019.Model.Food;
 import com.example.a38_nguyenngocanh_22122019.MyClick;
@@ -36,6 +37,7 @@ public class YourOrderFragment extends Fragment {
         public void OnClickAdd(Food food) {
                 OrderFragment.sumAmount--;
                 OrderFragment.sumTotal -= food.getPrice();
+                binding.sumTotal.setText("Total: " + OrderFragment.sumTotal);
                 int t = food.getAmount();
                 food.setAmount(t--);
                 Toast.makeText(getContext(), "-1", Toast.LENGTH_SHORT).show();
@@ -46,6 +48,7 @@ public class YourOrderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_yourorder, container, false);
+        binding.sumTotal.setText("Total: " + OrderFragment.sumTotal);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(), RecyclerView.VERTICAL, false);
 
@@ -56,7 +59,7 @@ public class YourOrderFragment extends Fragment {
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.sendMessage(1);
+                AppManager.handler.sendEmptyMessageDelayed(1, 0);
             }
         });
         return binding.getRoot();
