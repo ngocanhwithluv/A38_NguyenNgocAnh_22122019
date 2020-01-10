@@ -3,8 +3,16 @@
     android:layout_width="match_parent"
 
     android:layout_height="wrap_content">
+    <ImageView
+        android:padding="@dimen/_5sdp"
+        android:id="@+id/image_food"
+        android:layout_alignParentLeft="true"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"/>
 
     <TextView
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/image_food"
         android:id="@+id/tex_view_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,12 +22,14 @@
         android:textSize="@dimen/_20sdp" />
 
     <TextView
+        android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/total"
         android:text=" : "
         android:textSize="@dimen/_20sdp"/>
     <TextView
+        android:layout_centerVertical="true"
         android:padding="@dimen/_2sdp"
         android:layout_alignParentRight="true"
         android:id="@+id/total"

@@ -1,15 +1,19 @@
-package com.example.a38_nguyenngocanh_22122019;
+package com.example.a38_nguyenngocanh_22122019.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.a38_nguyenngocanh_22122019.Model.Food;
+import com.example.a38_nguyenngocanh_22122019.MyClick;
+import com.example.a38_nguyenngocanh_22122019.R;
 import com.example.a38_nguyenngocanh_22122019.databinding.ActivityOrderBinding;
 
 import java.util.ArrayList;
@@ -19,7 +23,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     public ArrayList<Food> foods;
     public Context context;
     public ActivityOrderBinding binding;
-    MyClick myClick;
+    public MyClick myClick;
 
     public FoodAdapter(ArrayList<Food> foodArrayList, Context context, MyClick myClick) {
         this.foods = foodArrayList;
@@ -42,6 +46,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         final Food food = foods.get(position);
         holder.nameFood.setText(food.getName());
         holder.totalFood.setText(food.getPrice()+ "$");
+        holder.imageFood.setImageResource(food.getImage());
 
         holder.nameFood.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +56,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 food.setAmount(amount);
             }
         });
-
     }
 
     @Override
@@ -62,12 +66,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder  {
         TextView nameFood;
         TextView totalFood;
+        ImageView imageFood;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameFood = itemView.findViewById(R.id.tex_view_name);
             totalFood = itemView.findViewById(R.id.total);
-
+            imageFood = itemView.findViewById(R.id.image_food);
         }
     }
 }
