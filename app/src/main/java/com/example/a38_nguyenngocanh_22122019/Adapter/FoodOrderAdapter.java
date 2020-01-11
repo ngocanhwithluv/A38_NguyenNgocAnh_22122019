@@ -20,11 +20,6 @@ import java.util.ArrayList;
 
 public class FoodOrderAdapter extends RecyclerView.Adapter<FoodOrderAdapter.ViewHolder> {
 
-    public ArrayList<Food> foods;
-    public Context context;
-    public ActivityYourorderBinding binding;
-    public MyClick myClick;
-
     public FoodOrderAdapter(ArrayList<Food> foodArrayList, Context context, MyClick myClick) {
         this.foods = foodArrayList;
         this.context = context;
@@ -40,7 +35,7 @@ public class FoodOrderAdapter extends RecyclerView.Adapter<FoodOrderAdapter.View
     }
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        final Food food = foods.get(position);
+        food = foods.get(position);
         holder.nameFood.setText(food.getName());
         holder.amountFood.setText("(" + food.getAmount() + ")");
         holder.imageFood.setImageResource(food.getImage());
@@ -73,4 +68,10 @@ public class FoodOrderAdapter extends RecyclerView.Adapter<FoodOrderAdapter.View
             imageFood = itemView.findViewById(R.id.image_food);
         }
     }
+
+    private ArrayList<Food> foods;
+    private Context context;
+    private ActivityYourorderBinding binding;
+    private MyClick myClick;
+    private Food food;
 }

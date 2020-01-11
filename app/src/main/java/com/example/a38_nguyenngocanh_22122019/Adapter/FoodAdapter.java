@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,16 +45,18 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final Food food = foods.get(position);
-        holder.nameFood.setText(food.getName());
+        holder.nameFood.setText(food.getName() + "(" +food.getAmount()+")");
         holder.totalFood.setText(food.getPrice()+ "$");
         holder.imageFood.setImageResource(food.getImage());
 
-        holder.nameFood.setOnClickListener(new View.OnClickListener() {
+        holder.foodLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myClick.OnClickAdd(food);
                 int amount = food.getAmount() + 1;
                 food.setAmount(amount);
+                holder.nameFood.setText(food.getName() + "(" +food.getAmount()+")");
+
             }
         });
     }
@@ -67,12 +70,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         TextView nameFood;
         TextView totalFood;
         ImageView imageFood;
+        RelativeLayout foodLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameFood = itemView.findViewById(R.id.tex_view_name);
             totalFood = itemView.findViewById(R.id.total);
             imageFood = itemView.findViewById(R.id.image_food);
+            foodLayout = itemView.findViewById(R.id.food_order_layout);
         }
     }
 }

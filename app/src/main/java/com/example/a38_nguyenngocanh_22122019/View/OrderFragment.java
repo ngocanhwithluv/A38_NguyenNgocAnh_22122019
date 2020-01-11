@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.a38_nguyenngocanh_22122019.Adapter.FoodAdapter;
 import com.example.a38_nguyenngocanh_22122019.AppManager;
+import com.example.a38_nguyenngocanh_22122019.Controller.Controller;
 import com.example.a38_nguyenngocanh_22122019.Controller.MainActivity;
 import com.example.a38_nguyenngocanh_22122019.Model.Food;
 import com.example.a38_nguyenngocanh_22122019.MyClick;
@@ -27,7 +28,7 @@ public class OrderFragment extends Fragment {
 
     public ActivityOrderBinding binding;
     public FoodAdapter foodAdapter;
-    public static int sumAmount = 0, sumTotal = 0;
+
     public static OrderFragment newInstance() {
         Bundle args = new Bundle();
         OrderFragment fragment = new OrderFragment();
@@ -38,13 +39,9 @@ public class OrderFragment extends Fragment {
     MyClick myClick = new MyClick() {
         @Override
         public void OnClickAdd(Food food) {
-            sumAmount++;
-            sumTotal += food.getPrice();
-            int newAmount = food.getAmount();
-            food.setAmount(newAmount++);
-            binding.sumTotal.setText("Total: " + sumTotal);
-            binding.textViewSumAmount.setText(Integer.toString(sumAmount));
-            Toast.makeText(getContext(), "+1", Toast.LENGTH_SHORT).show();
+            Controller.addFoods(food);
+            binding.sumTotal.setText("Total: " + Controller.sumTotal);
+            binding.textViewSumAmount.setText(Integer.toString(Controller.sumAmount));
         }
     };
 
@@ -54,7 +51,7 @@ public class OrderFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_order, container, false);
 
-        binding.sumTotal.setText("Total: " + sumTotal);
+        binding.sumTotal.setText("Total: " + Controller.sumTotal);
 
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,19 +63,21 @@ public class OrderFragment extends Fragment {
         binding.buttonYourOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Controller.setFoodsOrdered();
                 AppManager.handler.sendEmptyMessageDelayed(2, 0);
             }
         });
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
-                getContext(), RecyclerView.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,RecyclerView.HORIZONTAL );
 
-        binding.recyclerView.setLayoutManager(linearLayoutManager);
-        foodAdapter = new FoodAdapter(MainActivity.foods, getContext(), myClick);
+        binding.recyclerView.setLayoutManager(gridLayoutManager);
+        foodAdapter = new FoodAdapter(Controller.foods, getContext(), myClick);
         foodAdapter.notifyDataSetChanged();
-        binding.textViewSumAmount.setText(Integer.toString(sumAmount));
+        binding.textViewSumAmount.setText(Integer.toString(Controller.sumAmount));
         binding.recyclerView.setAdapter(foodAdapter);
         return binding.getRoot();
     }

@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<RelativeLayout
+    android:layout_width="@dimen/_150sdp"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">\
 
-    android:layout_height="wrap_content">
-    <ImageView
-        android:padding="@dimen/_5sdp"
-        android:id="@+id/image_food"
-        android:layout_alignParentLeft="true"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="@dimen/_140sdp"
+        android:background="@drawable/custom_background"
+        android:layout_centerInParent="true"
+        android:id="@+id/food_order_layout"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/_5sdp"
+            android:id="@+id/image_food"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"/>
 
-    <TextView
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/image_food"
-        android:id="@+id/tex_view_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/_2sdp"
-        android:text="text"
-        android:textColor="#000000"
-        android:textSize="@dimen/_20sdp" />
+        <TextView
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/image_food"
+            android:id="@+id/tex_view_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_2sdp"
+            android:text="text"
+            android:textColor="#000000"
+            android:textSize="@dimen/_13sdp" />
 
-    <TextView
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/total"
-        android:text=" : "
-        android:textSize="@dimen/_20sdp"/>
-    <TextView
-        android:layout_centerVertical="true"
-        android:padding="@dimen/_2sdp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/total"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="wrap_content"
-        android:text="$"
-        android:gravity="right"
-        android:textSize="@dimen/_20sdp"/>
-    <TextView
-        android:layout_marginTop="@dimen/_4sdp"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:layout_below="@+id/image_food"
-        android:background="#FF4C38"/>
+        <TextView
+            android:layout_below="@+id/tex_view_name"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/_2sdp"
+            android:id="@+id/total"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="@dimen/_10sdp"/>
 
 
+
+    </RelativeLayout>
 </RelativeLayout>
