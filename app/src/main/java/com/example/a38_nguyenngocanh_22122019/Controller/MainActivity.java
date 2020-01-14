@@ -6,33 +6,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 
 import com.example.a38_nguyenngocanh_22122019.AppManager;
 import com.example.a38_nguyenngocanh_22122019.R;
-import com.example.a38_nguyenngocanh_22122019.View.LoginFragment;
-import com.example.a38_nguyenngocanh_22122019.View.OrderFragment;
-import com.example.a38_nguyenngocanh_22122019.View.YourOrderFragment;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    public void moveFragment(int message){
+    public void moveFragment(int message) {
         switch (message) {
             case 1: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, Controller.orderFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, AppManager.orderFragment).commit();
 
                 break;
             }
             case 2: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, Controller.yourOrderFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, AppManager.yourOrderFragment).commit();
 
                 break;
             }
             case 0: {
                 Controller.resetData();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, Controller.loginFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, AppManager.loginFragment).commit();
                 break;
             }
         }

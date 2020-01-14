@@ -19,9 +19,6 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    public static LoginFragment loginFragment = LoginFragment.newInstance();
-    public static OrderFragment orderFragment = OrderFragment.newInstance();
-    public static YourOrderFragment yourOrderFragment = YourOrderFragment.newInstance();
     public static ArrayList<Food> foods = new ArrayList<>();
     public static ArrayList<Food> foodsOrdered = new ArrayList<>();
     public static int sumAmount = 0, sumTotal = 0;
@@ -30,51 +27,77 @@ public class Controller {
         foods.add(new Food("Coca", 10, 0, R.drawable.soda));
         foods.add(new Food("Chicken", 12, 0, R.drawable.chicken));
         foods.add(new Food("Rice", 15, 0, R.drawable.bread));
-        foods.add(new Food("Meat", 20, 0,R.drawable.chinese));
+        foods.add(new Food("Meat", 20, 0, R.drawable.chinese));
         foods.add(new Food("Durex", 60, 0, R.drawable.fruit));
         foods.add(new Food("BimBim", 5, 0, R.drawable.potato));
         foods.add(new Food("Snack", 6, 0, R.drawable.slice));
         foods.add(new Food("Vegetable", 5, 0, R.drawable.burger));
     }
-    public static void resetData(){
+
+    public static void resetData() {
         foods = new ArrayList<>();
         foodsOrdered = new ArrayList<>();
         setFoods();
         sumAmount = 0;
         sumTotal = 0;
     }
-    public static void resetDataOrder(){
+
+    public static void resetDataOrder() {
         foodsOrdered = new ArrayList<>();
     }
-    public static void addFoods(Food food){
-        sumAmount ++ ;
+
+    public static void addFoods(Food food) {
+        sumAmount++;
         sumTotal += food.getPrice();
         int newAmount = food.getAmount();
         food.setAmount(newAmount++);
-        foodsOrdered.add(food);
+//        foodsOrdered.add(food);
         Toast.makeText(AppManager.context, "+1", Toast.LENGTH_SHORT).show();
     }
 
-    public static void delFood(Food food){
-        sumAmount --;
-        sumTotal -= food.getPrice();
-        int newAmount = food.getAmount() - 1;
-        food.setAmount(newAmount);
-        for(Food i : foods){
-            if(i.getName().equals(food.getName())){
-                int j = foods.indexOf(i);
-                i.setAmount(newAmount);
-                foods.set(j, i);
-            }
+    public static void delFood(Food food) {
+        if (food.getAmount() > 0) {
+            sumAmount--;
+            sumTotal -= food.getPrice();
+            int newAmount = food.getAmount() - 1;
+            food.setAmount(newAmount);
+//            for (Food i : foods) {
+//                if (i.getName().equals(food.getName())) {
+//                    int j = foods.indexOf(i);
+//                    i.setAmount(newAmount);
+//                    foods.set(j, i);
+//                }
+//            }
+//            for (Food i : foodsOrdered) {
+//                if (i.getName().equals(food.getName())) {
+//                    int j = foodsOrdered.indexOf(i);
+//                    i.setAmount(newAmount);
+//                    foodsOrdered.set(j, i);
+//                }
+//            }
+//            Controller.setFoodsOrdered();
+            Toast.makeText(AppManager.context, "-1", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(AppManager.context, "Hết", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(AppManager.context, "-1", Toast.LENGTH_SHORT).show();
     }
 
-    public static void setFoodsOrdered(){
+    public static void setFoodsOrdered() {
         resetDataOrder();
-        for (Food i : foods){
-            if(i.getAmount() > 0){
+        for (Food i : foods) {
+            if (i.getAmount() > 0) {
                 foodsOrdered.add(i);
+            }
+        }
+    }
+
+    public static void editFood(){
+        for (Food i : foodsOrdered) {
+            for (Food j : foods) {
+                if(i.getName().equals(j.getName())){
+                    j.setAmount(i.getAmount());
+                    break;
+                }
             }
         }
     }

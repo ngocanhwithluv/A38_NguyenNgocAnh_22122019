@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +35,10 @@ public class YourOrderFragment extends Fragment {
     MyClick myClick = new MyClick() {
         @Override
         public void OnClickAdd(Food food) {
+        }
+
+        @Override
+        public void OnClickDelete(Food food) {
             Controller.delFood(food);
             binding.sumTotal.setText("Total: " + Controller.sumTotal);
         }
@@ -56,7 +59,7 @@ public class YourOrderFragment extends Fragment {
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Controller.resetDataOrder();
+                Controller.editFood();
                 AppManager.handler.sendEmptyMessageDelayed(1, 0);
             }
         });

@@ -43,6 +43,11 @@ public class OrderFragment extends Fragment {
             binding.sumTotal.setText("Total: " + Controller.sumTotal);
             binding.textViewSumAmount.setText(Integer.toString(Controller.sumAmount));
         }
+
+        @Override
+        public void OnClickDelete(Food food) {
+
+        }
     };
 
     @Nullable

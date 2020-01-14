@@ -48,7 +48,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         holder.nameFood.setText(food.getName() + "(" +food.getAmount()+")");
         holder.totalFood.setText(food.getPrice()+ "$");
         holder.imageFood.setImageResource(food.getImage());
-
         holder.foodLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +55,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 int amount = food.getAmount() + 1;
                 food.setAmount(amount);
                 holder.nameFood.setText(food.getName() + "(" +food.getAmount()+")");
-
             }
         });
     }
