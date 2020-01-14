@@ -48,6 +48,11 @@ public class OrderFragment extends Fragment {
         public void OnClickDelete(Food food) {
 
         }
+
+        @Override
+        public void OnClickRemove(Food food) {
+
+        }
     };
 
     @Nullable
@@ -75,11 +80,11 @@ public class OrderFragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
 
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,RecyclerView.HORIZONTAL );
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3,RecyclerView.VERTICAL );
 
-        binding.recyclerView.setLayoutManager(gridLayoutManager);
+        binding.recyclerView.setLayoutManager(staggeredGridLayoutManager);
         foodAdapter = new FoodAdapter(Controller.foods, getContext(), myClick);
         foodAdapter.notifyDataSetChanged();
         binding.textViewSumAmount.setText(Integer.toString(Controller.sumAmount));

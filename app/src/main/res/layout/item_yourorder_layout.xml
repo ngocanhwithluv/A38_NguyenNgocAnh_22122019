@@ -1,40 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:id="@+id/relative_layout_1"
     android:layout_height="wrap_content">
     <TextView
-        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/_10sdp"
         android:layout_toRightOf="@+id/image_food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_view_name"
         android:text="text"
-        android:textSize="@dimen/_20sdp"
-        android:padding="@dimen/_2sdp"
+        android:textSize="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:textColor="#000000"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/price_text_view"
+        android:text="Amount"
+        android:textSize="@dimen/_10sdp"
+        android:textColor="#ff00"
+        android:layout_below="@+id/text_view_name"
+        android:layout_toRightOf="@+id/image_food"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"/>
     <ImageView
+        android:layout_centerVertical="true"
         android:padding="@dimen/_5sdp"
         android:id="@+id/image_food"
         android:layout_alignParentLeft="true"
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"/>
-    <TextView
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:layout_toRightOf="@+id/text_view_name"
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_view_amount"
-        android:text="text"
-        android:textSize="@dimen/_15sdp"
-        android:padding="@dimen/_2sdp"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:textColor="#000000"/>
+        android:layout_height="@dimen/_20sdp"
+        android:layout_below="@+id/price_text_view"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_toRightOf="@+id/image_food"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:id="@+id/delete_food_button"
+            android:text="-"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="#000000"
+            android:background="#B1B1B1"/>
+        <TextView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="wrap_content"
+            android:id="@+id/amount_text_view"
+            android:textSize="@dimen/_10sdp"
+            android:gravity="center"
+            android:textColor="#000000"/>
+        <Button
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:id="@+id/add_food_button"
+            android:text="+"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="#000000"
+            android:background="#B1B1B1"/>
+
+    </LinearLayout>
+
     <TextView
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
-        android:layout_below="@+id/image_food"
+        android:layout_below="@+id/linear_layout"
         android:background="#FF4C38"/>
+    <TextView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:text="X"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="@dimen/_8sdp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/remove_food_ordered"/>
+
+
+
 </RelativeLayout>

@@ -52,8 +52,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 myClick.OnClickAdd(food);
-                int amount = food.getAmount() + 1;
-                food.setAmount(amount);
                 holder.nameFood.setText(food.getName() + "(" +food.getAmount()+")");
             }
         });

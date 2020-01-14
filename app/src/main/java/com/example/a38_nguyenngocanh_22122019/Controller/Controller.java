@@ -1,21 +1,12 @@
 package com.example.a38_nguyenngocanh_22122019.Controller;
 
-import android.os.Handler;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import com.example.a38_nguyenngocanh_22122019.AppManager;
 import com.example.a38_nguyenngocanh_22122019.Model.Food;
 import com.example.a38_nguyenngocanh_22122019.R;
-import com.example.a38_nguyenngocanh_22122019.View.LoginFragment;
-import com.example.a38_nguyenngocanh_22122019.View.OrderFragment;
-import com.example.a38_nguyenngocanh_22122019.View.YourOrderFragment;
-import com.example.a38_nguyenngocanh_22122019.databinding.ActivityOrderBinding;
-import com.example.a38_nguyenngocanh_22122019.databinding.ActivityYourorderBinding;
 
 import java.util.ArrayList;
-
 
 public class Controller {
 
@@ -24,14 +15,14 @@ public class Controller {
     public static int sumAmount = 0, sumTotal = 0;
 
     public static void setFoods() {
-        foods.add(new Food("Coca", 10, 0, R.drawable.soda));
-        foods.add(new Food("Chicken", 12, 0, R.drawable.chicken));
-        foods.add(new Food("Rice", 15, 0, R.drawable.bread));
-        foods.add(new Food("Meat", 20, 0, R.drawable.chinese));
-        foods.add(new Food("Durex", 60, 0, R.drawable.fruit));
-        foods.add(new Food("BimBim", 5, 0, R.drawable.potato));
-        foods.add(new Food("Snack", 6, 0, R.drawable.slice));
-        foods.add(new Food("Vegetable", 5, 0, R.drawable.burger));
+        foods.add(new Food("Soda", 10, 0, R.drawable.soda));
+        foods.add(new Food("Chicken", 60, 0, R.drawable.chicken));
+        foods.add(new Food("Hot Dog", 10, 0, R.drawable.bread));
+        foods.add(new Food("Noodle", 10, 0, R.drawable.chinese));
+        foods.add(new Food("Fruit", 7, 0, R.drawable.fruit));
+        foods.add(new Food("Potato", 20, 0, R.drawable.potato));
+        foods.add(new Food("Pizza", 30, 0, R.drawable.slice));
+        foods.add(new Food("Hamburger", 15, 0, R.drawable.burger));
     }
 
     public static void resetData() {
@@ -49,37 +40,30 @@ public class Controller {
     public static void addFoods(Food food) {
         sumAmount++;
         sumTotal += food.getPrice();
-        int newAmount = food.getAmount();
-        food.setAmount(newAmount++);
-//        foodsOrdered.add(food);
+        int newAmount = food.getAmount() + 1;
+        food.setAmount(newAmount);
         Toast.makeText(AppManager.context, "+1", Toast.LENGTH_SHORT).show();
     }
 
     public static void delFood(Food food) {
-        if (food.getAmount() > 0) {
-            sumAmount--;
-            sumTotal -= food.getPrice();
-            int newAmount = food.getAmount() - 1;
-            food.setAmount(newAmount);
-//            for (Food i : foods) {
-//                if (i.getName().equals(food.getName())) {
-//                    int j = foods.indexOf(i);
-//                    i.setAmount(newAmount);
-//                    foods.set(j, i);
-//                }
-//            }
-//            for (Food i : foodsOrdered) {
-//                if (i.getName().equals(food.getName())) {
-//                    int j = foodsOrdered.indexOf(i);
-//                    i.setAmount(newAmount);
-//                    foodsOrdered.set(j, i);
-//                }
-//            }
-//            Controller.setFoodsOrdered();
-            Toast.makeText(AppManager.context, "-1", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(AppManager.context, "Hết", Toast.LENGTH_SHORT).show();
+        sumAmount--;
+        sumTotal -= food.getPrice();
+        int newAmount = food.getAmount() - 1;
+        food.setAmount(newAmount);
+        Toast.makeText(AppManager.context, "-1", Toast.LENGTH_SHORT).show();
+    }
+
+    public static void reMoveFood(Food food){
+        sumAmount-=food.getAmount();
+        sumTotal-= food.getAmount()*food.getPrice();
+        for (Food i : foods) {
+            if (i.getName().equals(food.getName())) {
+                i.setAmount(0);
+                break;
+            }
         }
+        food.setAmount(0);
+        foodsOrdered.remove(food);
     }
 
     public static void setFoodsOrdered() {
@@ -91,10 +75,10 @@ public class Controller {
         }
     }
 
-    public static void editFood(){
+    public static void editFood() {
         for (Food i : foodsOrdered) {
             for (Food j : foods) {
-                if(i.getName().equals(j.getName())){
+                if (i.getName().equals(j.getName())) {
                     j.setAmount(i.getAmount());
                     break;
                 }

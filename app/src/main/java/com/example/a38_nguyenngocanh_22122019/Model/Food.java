@@ -1,20 +1,11 @@
 package com.example.a38_nguyenngocanh_22122019.Model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 public class Food implements Serializable {
     private String name;
     private int price, amount;
     private int image;
-
-//    public Food(String name, int price, int amount) {
-//        this.name = name;
-//        this.price = price;
-//        this.amount = amount;
-//    }
 
     public Food(String name, int price, int amount, int image) {
         this.name = name;

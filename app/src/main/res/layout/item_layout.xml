@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:layout_width="@dimen/_150sdp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">\
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="@dimen/_140sdp"
+        android:layout_width="@dimen/_90sdp"
         android:background="@drawable/custom_background"
         android:layout_centerHorizontal="true"
         android:id="@+id/food_order_layout"
-        android:layout_marginBottom="@dimen/_7sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:layout_height="wrap_content">
         <ImageView
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_centerHorizontal="true"
             android:padding="@dimen/_5sdp"
             android:id="@+id/image_food"
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_90sdp"/>
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"/>
 
         <TextView
             android:gravity="center"
@@ -29,7 +29,7 @@
             android:padding="@dimen/_2sdp"
             android:text="text"
             android:textColor="#000000"
-            android:textSize="@dimen/_13sdp" />
+            android:textSize="@dimen/_10sdp" />
 
         <TextView
             android:layout_below="@+id/tex_view_name"
@@ -42,7 +42,7 @@
             android:textColor="#000000"
             android:textStyle="bold"
             android:gravity="center"
-            android:textSize="@dimen/_10sdp"/>
+            android:textSize="@dimen/_8sdp"/>
 
 
 

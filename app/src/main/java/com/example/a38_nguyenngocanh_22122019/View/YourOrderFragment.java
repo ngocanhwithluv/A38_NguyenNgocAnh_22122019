@@ -35,11 +35,18 @@ public class YourOrderFragment extends Fragment {
     MyClick myClick = new MyClick() {
         @Override
         public void OnClickAdd(Food food) {
+            Controller.addFoods(food);
+            binding.sumTotal.setText("Total: " + Controller.sumTotal);
         }
-
         @Override
         public void OnClickDelete(Food food) {
             Controller.delFood(food);
+            binding.sumTotal.setText("Total: " + Controller.sumTotal);
+        }
+
+        @Override
+        public void OnClickRemove(Food food) {
+            Controller.reMoveFood(food);
             binding.sumTotal.setText("Total: " + Controller.sumTotal);
         }
     };
@@ -49,8 +56,7 @@ public class YourOrderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_yourorder, container, false);
         binding.sumTotal.setText("Total: " + Controller.sumTotal);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
-                getContext(), RecyclerView.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
 
         binding.recyclerView.setLayoutManager(linearLayoutManager);
         foodOrderAdapter = new FoodOrderAdapter(Controller.foodsOrdered, getContext(), myClick);
