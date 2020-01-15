@@ -30,7 +30,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         this.foods = foodArrayList;
         this.context = context;
         this.myClick = myClick;
-
     }
 
     @NonNull
@@ -45,14 +44,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final Food food = foods.get(position);
-        holder.nameFood.setText(food.getName() + "(" +food.getAmount()+")");
-        holder.totalFood.setText(food.getPrice()+ "$");
+        holder.nameFood.setText(food.getName() + "(" + food.getAmount() + ")");
+        holder.totalFood.setText(food.getPrice() + "$");
         holder.imageFood.setImageResource(food.getImage());
         holder.foodLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myClick.OnClickAdd(food);
-                holder.nameFood.setText(food.getName() + "(" +food.getAmount()+")");
+                holder.nameFood.setText(food.getName() + "(" + food.getAmount() + ")");
             }
         });
     }
@@ -62,7 +61,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         return foods.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder  {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameFood;
         TextView totalFood;
         ImageView imageFood;

@@ -17,12 +17,19 @@ public class Controller {
     public static void setFoods() {
         foods.add(new Food("Soda", 10, 0, R.drawable.soda));
         foods.add(new Food("Chicken", 60, 0, R.drawable.chicken));
-        foods.add(new Food("Hot Dog", 10, 0, R.drawable.bread));
+        foods.add(new Food("Hot dog", 10, 0, R.drawable.bread));
         foods.add(new Food("Noodle", 10, 0, R.drawable.chinese));
         foods.add(new Food("Fruit", 7, 0, R.drawable.fruit));
         foods.add(new Food("Potato", 20, 0, R.drawable.potato));
+        foods.add(new Food("Hamburger", 30, 0, R.drawable.burger));
         foods.add(new Food("Pizza", 30, 0, R.drawable.slice));
-        foods.add(new Food("Hamburger", 15, 0, R.drawable.burger));
+        foods.add(new Food("Beer", 15, 0, R.drawable.beer));
+        foods.add(new Food("Chocolate", 15, 0, R.drawable.chocolate));
+        foods.add(new Food("Coffee cup", 15, 0, R.drawable.coffeecup));
+        foods.add(new Food("Ice", 15, 0, R.drawable.jelly));
+        foods.add(new Food("Ice cup", 25, 0, R.drawable.dessert));
+        foods.add(new Food("Lemon fruit", 15, 0, R.drawable.lemonfruit));
+        foods.add(new Food("Orange fruit", 15, 0, R.drawable.orangefruit));
     }
 
     public static void resetData() {

@@ -40,7 +40,7 @@ public class OrderFragment extends Fragment {
         @Override
         public void OnClickAdd(Food food) {
             Controller.addFoods(food);
-            binding.sumTotal.setText("Total: " + Controller.sumTotal);
+            binding.sumTotal.setText("Total: " + Controller.sumTotal + "$");
             binding.textViewSumAmount.setText(Integer.toString(Controller.sumAmount));
         }
 
@@ -61,7 +61,7 @@ public class OrderFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_order, container, false);
 
-        binding.sumTotal.setText("Total: " + Controller.sumTotal);
+        binding.sumTotal.setText("Total: " + Controller.sumTotal + "$");
 
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
