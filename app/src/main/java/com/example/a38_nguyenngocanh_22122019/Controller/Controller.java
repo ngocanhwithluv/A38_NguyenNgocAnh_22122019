@@ -12,7 +12,7 @@ public class Controller {
 
     public static ArrayList<Food> foods = new ArrayList<>();
     public static ArrayList<Food> foodsOrdered = new ArrayList<>();
-    public static int sumAmount = 0, sumTotal = 0;
+    public static int sumAmount = 0, total = 0;
 
     public static void setFoods() {
         foods.add(new Food("Soda", 10, 0, R.drawable.soda));
@@ -37,7 +37,7 @@ public class Controller {
         foodsOrdered = new ArrayList<>();
         setFoods();
         sumAmount = 0;
-        sumTotal = 0;
+        total = 0;
     }
 
     public static void resetDataOrder() {
@@ -46,7 +46,7 @@ public class Controller {
 
     public static void addFoods(Food food) {
         sumAmount++;
-        sumTotal += food.getPrice();
+        total += food.getPrice();
         int newAmount = food.getAmount() + 1;
         food.setAmount(newAmount);
         Toast.makeText(AppManager.context, "+1", Toast.LENGTH_SHORT).show();
@@ -54,7 +54,7 @@ public class Controller {
 
     public static void delFood(Food food) {
         sumAmount--;
-        sumTotal -= food.getPrice();
+        total -= food.getPrice();
         int newAmount = food.getAmount() - 1;
         food.setAmount(newAmount);
         Toast.makeText(AppManager.context, "-1", Toast.LENGTH_SHORT).show();
@@ -62,13 +62,15 @@ public class Controller {
 
     public static void reMoveFood(Food food){
         sumAmount-=food.getAmount();
-        sumTotal-= food.getAmount()*food.getPrice();
-        for (Food i : foods) {
-            if (i.getName().equals(food.getName())) {
-                i.setAmount(0);
-                break;
-            }
-        }
+        total -= food.getAmount()*food.getPrice();
+//        for (Food i : foods) {
+//            if (i.getName().equals(food.getName())) {
+//                i.setAmount(0);
+//                break;
+//            }
+//        }
+//        food.setAmount(0);
+
         food.setAmount(0);
         foodsOrdered.remove(food);
     }

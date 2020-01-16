@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +17,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.example.a38_nguyenngocanh_22122019.Adapter.FoodAdapter;
 import com.example.a38_nguyenngocanh_22122019.AppManager;
 import com.example.a38_nguyenngocanh_22122019.Controller.Controller;
-import com.example.a38_nguyenngocanh_22122019.Controller.MainActivity;
 import com.example.a38_nguyenngocanh_22122019.Model.Food;
 import com.example.a38_nguyenngocanh_22122019.MyClick;
 import com.example.a38_nguyenngocanh_22122019.R;
@@ -40,7 +38,7 @@ public class OrderFragment extends Fragment {
         @Override
         public void OnClickAdd(Food food) {
             Controller.addFoods(food);
-            binding.sumTotal.setText("Total: " + Controller.sumTotal + "$");
+            binding.sumTotal.setText("Total: " + Controller.total + "$");
             binding.textViewSumAmount.setText(Integer.toString(Controller.sumAmount));
         }
 
@@ -61,7 +59,7 @@ public class OrderFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_order, container, false);
 
-        binding.sumTotal.setText("Total: " + Controller.sumTotal + "$");
+        binding.sumTotal.setText("Total: " + Controller.total + "$");
 
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
